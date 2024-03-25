@@ -16,7 +16,11 @@ app.use(express.urlencoded({
     extended:true,
 }))
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+}))
 
 import user from './routes/userRoutes.js'
 import payment from './routes/paymentRoutes.js'
